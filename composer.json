@@ -1,0 +1,20 @@
+{
+    "name": "nwby/laravel-inertia-preset",
+    "description": "Preset for Laravel applications with Inertia.js and TailwindCSS",
+    "keywords": ["laravel", "inertiajs", "tailwind", "preset"],
+    "license": "MIT",
+    "authors": [{
+        "name": "NWBY",
+        "email": "sam@nwby.io"
+    }],
+    "autoload": {
+        "psr-4": {
+            "Nwby\\LaravelInertia\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": ["Nwby\\LaravelInertia\\LaravelInertiaServiceProvider"]
+        }
+    }
+}
