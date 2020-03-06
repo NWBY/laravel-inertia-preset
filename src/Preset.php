@@ -2,11 +2,10 @@
 
 namespace Nwby\LaravelInertia;
 
-use Illuminate\Foundation\Console\Presets\Preset as LaravelPreset;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
 
-class Preset extends LaravelPreset
+class Preset
 {
     public static function install()
     {
