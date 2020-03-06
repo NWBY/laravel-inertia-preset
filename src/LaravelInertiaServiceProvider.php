@@ -4,7 +4,6 @@ namespace Nwby\LaravelInertia;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\Console\PresetCommand;
-use Preset;
 
 class LaravelInertiaServiceProvider extends ServiceProvider
 {
@@ -13,7 +12,7 @@ class LaravelInertiaServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        PresetCommand::macro('inertia', function ($command) {
+        PresetCommand::macro('laravel-inertia', function ($command) {
             Preset::install();
         });
     }
