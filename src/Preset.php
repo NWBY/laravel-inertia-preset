@@ -15,6 +15,7 @@ class Preset
         static::updateJs();
         static::updateSass();
         static::updateViews();
+        static::createTailwindConfig();
     }
 
     /**
@@ -29,16 +30,9 @@ class Preset
     /**
      * Update package.json
      */
-    public static function updatePackageArray($packages)
+    public static function updatePackages()
     {
-        return array_merge([
-            'tailwindcss' => 'latest',
-            '@inertiajs/inertia' => 'latest',
-            '@inertiajs/inertia-vue' => 'latest'
-        ], Arr::except($packages, [
-            'popper.js',
-            'lodash'
-        ]));
+        copy(__DIR__ . '/stubs/js/package.json', base_path('package.json'));
     }
 
     /**
@@ -81,5 +75,10 @@ class Preset
         copy(__DIR__ . '/stubs/views/passwords/confirm.blade.php', resource_path('assets/views/auth/passwords/confirm.blade.php'));
         copy(__DIR__ . '/stubs/views/passwords/email.blade.php', resource_path('assets/views/auth/passwords/email.blade.php'));
         copy(__DIR__ . '/stubs/views/passwords/reset.blade.php', resource_path('assets/views/auth/passwords/reset.blade.php'));
+    }
+
+    public static function createTailwindConfig()
+    {
+        copy(__DIR__ . '/stubs/tailwind.config.js', base_path('tailwind.config.js'));
     }
 }
