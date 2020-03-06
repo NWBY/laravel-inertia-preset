@@ -11,7 +11,6 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -22,12 +21,14 @@
 <body>
     <div class="">
         <div class="">
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('password.update') }}">
                 @csrf
-                <label for="email" class="">{{ __('E-Mail Address') }}</label>
 
+                <input type="hidden" name="token" value="{{ $token }}">
+
+                <label for="email" class="">{{ __('E-Mail Address') }}</label>
                 <div class="">
-                    <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
                     @error('email')
                         <span class="" role="alert">
@@ -36,10 +37,11 @@
                     @enderror
                 </div>
 
+
                 <label for="password" class="">{{ __('Password') }}</label>
 
                 <div class="">
-                    <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                    <input id="password" type="password" class=" @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                     @error('password')
                         <span class="" role="alert">
@@ -48,27 +50,24 @@
                     @enderror
                 </div>
 
-                <div class="">
-                    <input class="" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                    <label class="" for="remember">
-                        {{ __('Remember Me') }}
-                    </label>
+                <label for="password-confirm" class="">{{ __('Confirm Password') }}</label>
+
+                <div class="">
+                    <input id="password-confirm" type="password" class="" name="password_confirmation" required autocomplete="new-password">
                 </div>
 
                 <div class="">
                     <button type="submit" class="">
-                        {{ __('Login') }}
+                        {{ __('Reset Password') }}
                     </button>
-
-                    @if (Route::has('password.request'))
-                        <a class="" href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
-                        </a>
-                    @endif
                 </div>
             </form>
         </div>
     </div>
 </body>
 </html>
+
+
+
+

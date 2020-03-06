@@ -11,7 +11,6 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -22,8 +21,15 @@
 <body>
     <div class="">
         <div class="">
-            <form method="POST" action="{{ route('login') }}">
+            @if (session('status'))
+                <div class="" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
+
+            <form method="POST" action="{{ route('password.email') }}">
                 @csrf
+
                 <label for="email" class="">{{ __('E-Mail Address') }}</label>
 
                 <div class="">
@@ -36,36 +42,10 @@
                     @enderror
                 </div>
 
-                <label for="password" class="">{{ __('Password') }}</label>
-
-                <div class="">
-                    <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                    @error('password')
-                        <span class="" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-
-                <div class="">
-                    <input class="" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                    <label class="" for="remember">
-                        {{ __('Remember Me') }}
-                    </label>
-                </div>
-
                 <div class="">
                     <button type="submit" class="">
-                        {{ __('Login') }}
+                        {{ __('Send Password Reset Link') }}
                     </button>
-
-                    @if (Route::has('password.request'))
-                        <a class="" href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
-                        </a>
-                    @endif
                 </div>
             </form>
         </div>
