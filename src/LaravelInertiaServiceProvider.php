@@ -3,7 +3,7 @@
 namespace Nwby\LaravelInertia;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Foundation\Console\PresetCommand;
+use Laravel\Ui\UiCommand;
 
 class LaravelInertiaServiceProvider extends ServiceProvider
 {
@@ -12,7 +12,7 @@ class LaravelInertiaServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        PresetCommand::macro('laravel-inertia', function ($command) {
+        UiCommand::macro('laravel-inertia', function (UiCommand $command) {
             Preset::install();
         });
     }

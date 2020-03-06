@@ -31,5 +31,5 @@ composer require nwby/laravel-inertia-preset
 Run the preset:
 
 ```
-php artisan preset laravel-inertia
+php artisan ui laravel-inertia
 ```
