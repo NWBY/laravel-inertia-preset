@@ -62,7 +62,7 @@ class Preset
 
     public static function updateViews()
     {
-        File::deleteDirectory(resource_path('assets/views/layout'));
+        File::deleteDirectory(resource_path('views/layouts'));
         copy(__DIR__ . '/stubs/views/app.blade.php', resource_path('views/app.blade.php'));
 
         // Auth files
